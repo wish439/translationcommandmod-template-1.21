@@ -16,6 +16,7 @@ public class Translator {
     private final CommandBlockBlockEntity commandBlockEntity;
     private String command;
     private MinecraftServer server;
+
     public Translator(MinecraftServer server, CommandBlockBlockEntity commandBlockEntity) {
         this.parser = new Parser(server, commandBlockEntity);
         this.commandBlockEntity = commandBlockEntity;
@@ -33,14 +34,15 @@ public class Translator {
         this.replace(command);
         System.out.println("$Translator#translationAndReplace: " + command);
     }
+
     private void replace(String command) {
         command = command.replace(needTranslate, translate);
         this.commandBlockEntity.getCommandExecutor().setCommand(command);
     }
+
     private String getNeedTranslationFromJson(String json) {
-        System.out.println("json:" + json);
         if (json.startsWith("{") && json.endsWith("}")) {
-            JsonObject jsonObject = (JsonObject)JsonParser.parseString(json);
+            JsonObject jsonObject = JsonParser.parseString(json).getAsJsonObject();
             JsonElement text = jsonObject.get("text");
             if (text == null) return json;
             return text.getAsString();
@@ -51,6 +53,7 @@ public class Translator {
         }
         return json;
     }
+
     private String parseJsonFromText(Text text) {
         String s = new Text.Serializer(server.getRegistryManager()).serialize(text, null, null).toString();
         if (s.startsWith("{") && s.endsWith("}")) return s;
@@ -63,11 +66,13 @@ public class Translator {
         if (s == null) return;
         this.needTranslate = s;
     }
+
     private void getNeedTranslateTextFromCommandBlock() {
         Text s = parser.parseTextFromCommandBlock();
         if (s == null) return;
         this.needTranslateText = s;
     }
+
     private void translate() {
         this.translate = Translation.translate(this.needTranslate);
     }

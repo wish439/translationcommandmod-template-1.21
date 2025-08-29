@@ -1,6 +1,5 @@
 package com.wishtoday.tcm.Item;
 
-import com.wishtoday.tcm.Helper.Parser;
 import com.wishtoday.tcm.Helper.Translator;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -15,8 +14,6 @@ import net.minecraft.world.World;
 import org.jetbrains.annotations.NotNull;
 
 public class ModIfyCommandText extends Item {
-    @SuppressWarnings("FieldCanBeLocal")
-    private Parser parser;
 
     public ModIfyCommandText(Settings settings) {
         super(settings);
