@@ -89,7 +89,6 @@ public class Translator {
         return translate;
     }
 
-
     public CommandBlockBlockEntity getCommandBlockEntity() {
         return commandBlockEntity;
     }

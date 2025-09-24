@@ -10,6 +10,7 @@ import net.minecraft.command.argument.MessageArgumentType;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -44,7 +45,7 @@ public class Parser {
     }
     @Nullable
     private Text getTextNodeFromCommand(
-            CommandContextBuilder<ServerCommandSource> ctx) {
+            @NotNull CommandContextBuilder<ServerCommandSource> ctx) {
         ServerCommandSource source = ctx.getSource();
         ctx = getExecuteContext(ctx);
         for (Map.Entry<String, ParsedArgument<ServerCommandSource, ?>> entry : ctx.getArguments().entrySet()) {

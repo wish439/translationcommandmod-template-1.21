@@ -61,19 +61,17 @@ public class Translation {
         }
         return text;
     }
-    public static class TranslationResult {
+    static class TranslationResult {
         private String errorCode;
         private String query;
         private String[] translation;
     }
 
 
-    // SHA256加密方法
     private static String sha256(String input) throws Exception {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest(input.getBytes(StandardCharsets.UTF_8));
 
-        // 转换为十六进制字符串
         StringBuilder hexString = new StringBuilder();
         for (byte b : hash) {
             String hex = Integer.toHexString(0xff & b);

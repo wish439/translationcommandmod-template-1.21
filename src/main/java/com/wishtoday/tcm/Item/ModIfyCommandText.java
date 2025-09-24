@@ -24,9 +24,8 @@ public class ModIfyCommandText extends Item {
         BlockPos pos = context.getBlockPos();
         World world = context.getWorld();
         if (world.isClient) return ActionResult.SUCCESS;
-        @SuppressWarnings("DataFlowIssue") @NotNull
+        //@SuppressWarnings("DataFlowIssue") @NotNull
         MinecraftServer server = context.getWorld().getServer();
-        assert server != null;
         BlockState block = world.getBlockState(pos);
         BlockEntity blockEntity = world.getBlockEntity(pos);
         if (!block.isOf(Blocks.COMMAND_BLOCK) &&
