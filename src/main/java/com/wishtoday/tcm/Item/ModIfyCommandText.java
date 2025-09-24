@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 
 public class ModIfyCommandText extends Item {
 
-    public ModIfyCommandText(Settings settings) {
+    public ModIfyCommandText(Item.Settings settings) {
         super(settings);
     }
 
